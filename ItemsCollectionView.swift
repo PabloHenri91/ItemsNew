@@ -60,7 +60,9 @@ extension ItemsCollectionView: UICollectionViewDelegateFlowLayout {
         var height = ItemView.calculateHeight(width: collectionView.bounds.width / 2, item: items[i])
         
         if i % 2 == 0 {
-           height = max(height, ItemView.calculateHeight(width: collectionView.bounds.width / 2, item: items[i + 1]))
+            if i + 1 < items.count {
+                height = max(height, ItemView.calculateHeight(width: collectionView.bounds.width / 2, item: items[i + 1]))
+            }
         } else {
            height = max(height, ItemView.calculateHeight(width: collectionView.bounds.width / 2, item: items[i - 1]))
         }
